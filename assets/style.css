@@ -1,12 +1,12 @@
 body {
     background-color: silver;
     font-family: cursive;
+    margin: 10rem;
 }
 
 header {
     font-size: 50px;
     background-color: teal;
-    margin-right: 50%;
     padding: 1rem;
     border-radius: 3rem;
     font-weight: bold;
@@ -21,7 +21,6 @@ h1 {
     border-radius: 2.5rem;
     display: flex;
     justify-content: center;
-    margin-right: 55%;
 }
 
 h2 {
@@ -30,7 +29,6 @@ h2 {
     font-weight: bold;
     padding: .7rem;
     border-radius: 2rem;
-    margin-right: 42rem;
     display:flex;
     justify-content: center;
 }
