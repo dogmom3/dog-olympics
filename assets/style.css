@@ -1,0 +1,36 @@
+body {
+    background-color: silver;
+    font-family: cursive;
+}
+
+header {
+    font-size: 50px;
+    background-color: teal;
+    margin-right: 50%;
+    padding: 1rem;
+    border-radius: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    background-color: aquamarine;
+    font-size: 35px;
+    padding: .75rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: center;
+    margin-right: 55%;
+}
+
+h2 {
+    background-color: slateblue;
+    font-size: 30px;
+    font-weight: bold;
+    padding: .7rem;
+    border-radius: 2rem;
+    margin-right: 42rem;
+    display:flex;
+    justify-content: center;
+}
