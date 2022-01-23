@@ -12,23 +12,22 @@ var playerBones = 100;
 var playerJump = 10;
 var playerMoney = 10;
 
-//You can also log multiple values at once like this
-console.log(playerName, playerBones, playerJump, playerMoney);
-
 var opponentNames = ["Waldo", "Arlene", "Violet"];
-console.log(opponentNames[0]);
-console.log(opponentNames[1]);
-console.log(opponentNames[2]);
-console.log(opponentNames.length);
-// var opponentName = "Waldo";
-// var opponentName = "Arlene";
-// var opponentName = "Violet";
 var opponentBones = 50;
 var opponentJump = 12;
 
 //jump function
-var jump = function() {
-    //alert players that they are starting the round
+var jump = function(opponentName) {
+    //jump function statements
+}
+
+for(var i = 0; i < opponentNames.length; i++) {
+    console.log(opponentNames[i]);
+    console.log(i);
+    console.log(opponentNames[i] + " is at " + i + " index");
+}
+
+//alert players that they are starting the round
     window.alert("Welcome to Dog Olympics!");
 
 //ask player if they'd like to jump or run
@@ -84,46 +83,9 @@ else {
 }
 };
 
-//run jump function to start game
-// jump ();
-
-
-
-
-//     //subtract the value of 'playerJump' from the value of 'opponentBones' and use that result to update tehe value in the 'opponentBones' variable
-// opponentBones = opponentBones - playerJump;
-
-//     //log a resulting message to the console so we know that it worked.
-// console.log( 
-//     playerName + " jumped higher than " + opponentName + ". " + opponentName + " now has " + opponentBones + " bones remaining."
-// );
-
-// //count opponent's bones
-// if (opponentBones <= 0) {
-//     window.alert(opponentName + " lost!");
-// }
-// else {
-//     window.alert(opponentName + " still has "+ opponentBones + " bones left.");
-// }
-
-//     //subtract the value of 'opponentJump' from the value of 'playerBones' and use that result to update the value in the 'playerBones' variable.
-// playerBones = playerBones - opponentJump;
-//     //log a resultng message to the console so we know that it worked.
-//     console.log(
-//         opponentName + " jumped higher than " + playerName + ". " + playerName + " now has " + playerBones + " bones remaining."
-//     );
-
-//     //count player's bones
-//     if (playerBones <= 0) {
-//         window.alert(playerName + " has lost!");
-//     }
-//     else {
-//         window.alert(playerName + " still has " + playerBones + " bones left.");
-//     }
-
-
-//     jump();
-
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+  }
 
 
 //this ends the code that makes js load after html
