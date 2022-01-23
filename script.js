@@ -19,11 +19,11 @@ var opponentJump = 12;
 //jump function
 var jump = function(opponentName) {
     //jump function statements
-
-for(var i = 0; i < opponentNames.length; i++) {
-    console.log(opponentNames[i]);
-    console.log(i);
-    console.log(opponentNames[i] + " is at " + i + " index");
+    
+    for(var i = 0; i < opponentNames.length; i++) {
+        console.log(opponentNames[i]);
+        console.log(i);
+        console.log(opponentNames[i] + " is at " + i + " index");
 }
 
 //alert players that they are starting the round
