@@ -1,5 +1,5 @@
-//this code makes js load after html
-document.addEventListener('DOMContentLoaded', function(){
+// //this code makes js load after html
+// document.addEventListener('DOMContentLoaded', function(){
 
 // Game States
 // "WIN" - Player dog has out jumped all opponent dogs
@@ -23,7 +23,7 @@ var jump = function(opponentName) {
     while(opponentBones > 0) { 
         //ask player if they'd like to jump or run
         var promptJump = window.prompt("Would you like to JUMP or SKIP this round? Enter 'JUMP' or 'SKIP' to choose.");
-
+    }
         // if player chooses to jump, then jump
         if (promptJump === "jump" || promptJump === "JUMP") {
         //remove opponents bones by subtracting the amount set in the playerJump variable
@@ -99,7 +99,3 @@ else {
 for(var i = 0; i < opponentNames.length; i++) {
     jump(opponentNames[i]);
 }
-
-
-//this ends the code that makes js load after html
-}, false);
