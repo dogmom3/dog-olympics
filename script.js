@@ -19,8 +19,21 @@ var opponentJump = 12;
 //jump function
 var jump = function(opponentName) {
     //jump function statements
+    // repeat and execute as long as the opponent-dog still has bones
+    while(opponentBones > 0) { 
+        //ask player if they'd like to jump or run
+        var promptJump = window.prompt("Would you like to JUMP or SKIP this round? Enter 'JUMP' or 'SKIP' to choose.");
+
+        // if player chooses to jump, then jump
+        if (promptJump === "jump" || promptJump === "JUMP") {
+        //remove opponents bones by subtracting the amount set in the playerJump variable
+        opponentBones = opponentBones - playerJump;
+            console.log(
+            playerName + " jumped higher than " + opponentName + ". " + opponentName + " now has " + opponentBones + " bones remaining."
+);
+        }
     
-    for(var i = 0; i < opponentNames.length; i++) {
+        for(var i = 0; i < opponentNames.length; i++) {
         console.log(opponentNames[i]);
         console.log(i);
         console.log(opponentNames[i] + " is at " + i + " index");
