@@ -27,7 +27,7 @@ var jump = function (opponentName) {
     while (playerBones > 0 && opponentBones > 0) {
         //ask player if they'd like to jump or run
         var promptJump = window.prompt("Would you like to JUMP or SKIP this round? Enter 'JUMP' or 'SKIP' to choose.");
-        
+
         //if player picks "skip" confirm and then stop the loop
         if (promptJump === "skip" || promptJump === "SKIP") {
             //confirm player wants to skip
@@ -43,41 +43,41 @@ var jump = function (opponentName) {
             }
         }
 
-            //remove opponents bones by subtracting the amount set in the playerJump variable
-            opponentBones = opponentBones - playerJump;
-            console.log(
-                playerName + " jumped higher than " + opponentName + ". " + opponentName + " now has " + opponentBones + " bones remaining."
-            );
+        //remove opponents bones by subtracting the amount set in the playerJump variable
+        opponentBones = opponentBones - playerJump;
+        console.log(
+            playerName + " jumped higher than " + opponentName + ". " + opponentName + " now has " + opponentBones + " bones remaining."
+        );
 
-            //count opponents bones
-            if (opponentBones <= 0) {
-                window.alert(opponentName + " has lost!");
+        //count opponents bones
+        if (opponentBones <= 0) {
+            window.alert(opponentName + " has lost!");
 
-                //award player money for wining
-                playerMoney = playerMoney + 20;
+            //award player money for wining
+            playerMoney = playerMoney + 20;
 
-                //leave while() loop since opponent has lost
-                break;
-            } else {
-                window.alert(opponentName + " still has " + opponentBones + " bones left.");
-            }
-
-            //remove players bones by subtracting the amount set in opponentJump variable
-            playerBones = playerBones - opponentJump;
-            console.log(
-                opponentName + " jumped " + playerName + ". " + playerName + " now has " + playerBones + " bones remaining."
-            );
-
-            //count players bones
-            if (playerBones <= 0) {
-                window.alert(playerName + " has lost!");
-                //leave while() loop if player has lost
-                break;
-            } else {
-                window.alert(playerName + " still has " + playerBones + " bones left.");
-            }
+            //leave while() loop since opponent has lost
+            break;
+        } else {
+            window.alert(opponentName + " still has " + opponentBones + " bones left.");
         }
-    };
+
+        //remove players bones by subtracting the amount set in opponentJump variable
+        playerBones = playerBones - opponentJump;
+        console.log(
+            opponentName + " jumped " + playerName + ". " + playerName + " now has " + playerBones + " bones remaining."
+        );
+
+        //count players bones
+        if (playerBones <= 0) {
+            window.alert(playerName + " has lost!");
+            //leave while() loop if player has lost
+            break;
+        } else {
+            window.alert(playerName + " still has " + playerBones + " bones left.");
+        }
+    }
+};
 
 //             //if no (false), ask question again by running jump () again
 //          else jump();
@@ -92,8 +92,20 @@ var jump = function (opponentName) {
 
 //for loop
 for (var i = 0; i < opponentNames.length; i++) {
-    var pickedOpponentName = opponentNames[i];
-    opponentBones = 50;
-    //call function with opponent dog
-    jump(pickedOpponentName[i]);
-}
+    if (playerBones > 0) {
+        window.alert("Welcome to Dog Olympics! Round " + (i + 1));
+        else {
+            window.alert("You have been defeated! Game Over!");
+            break;
+        }
+        //pick new opponent to jump based on the index of the opponentNames array
+        var pickedOpponentName = opponentNames[i];
+        //reset opponentBones before starting new jump
+        opponentBones = 50;
+
+        //use debugger to pause script from running and check whats going on at that moment in the code
+        //debugger;
+        //pass the pickedOpponentName variable's value into the fight function, where it will assume the value of the opponentName parameter
+        //call function with opponent dog
+        jump(pickedOpponentName);
+    }
