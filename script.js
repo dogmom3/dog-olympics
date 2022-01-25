@@ -1,13 +1,4 @@
-// //this code makes js load after html
-// document.addEventListener('DOMContentLoaded', function(){
-
-// Game States
-// "WIN" - Player dog has out jumped all opponent dogs
-//    * Jumps with all opponent dogs
-//    * Out jump each opponent dog
-// "LOSE" - Player dog's bones are zero or less
-
-
+var playerName = window.prompt("What is your dog's name?");
 var playerBones = 100;
 var playerJump = 10;
 var playerMoney = 10;
@@ -18,7 +9,7 @@ var opponentJump = 12;
 
 //alert players that they are starting the round
 window.alert("Welcome to Dog Olympics!");
-var playerName = window.prompt("What is your dog's name?");
+
 
 //jump function
 var jump = function (opponentName) {
@@ -79,33 +70,28 @@ var jump = function (opponentName) {
     }
 };
 
-//             //if no (false), ask question again by running jump () again
-//          else jump();
-//     }
-
-//     //if player did not choose 1 or 2 in prompt
-// } else {
-//     window.alert("You need to pick a valid option. Try again.");
-//         }
-//     }
-// };
-
 //for loop
 for (var i = 0; i < opponentNames.length; i++) {
+    //if player still has bones, keep jumping
     if (playerBones > 0) {
+        //let player know what round the are in, arrays start at 0, so it needs to have a 1 added to it.
         window.alert("Welcome to Dog Olympics! Round " + (i + 1));
-        else {
-            window.alert("You have been defeated! Game Over!");
-            break;
-        }
+        
         //pick new opponent to jump based on the index of the opponentNames array
         var pickedOpponentName = opponentNames[i];
+        
         //reset opponentBones before starting new jump
         opponentBones = 50;
 
         //use debugger to pause script from running and check whats going on at that moment in the code
         //debugger;
+        
         //pass the pickedOpponentName variable's value into the fight function, where it will assume the value of the opponentName parameter
-        //call function with opponent dog
         jump(pickedOpponentName);
     }
+    //if the player is out of bones, stop the game
+    else {
+        window.alert("You have been defeated! Game Over!");
+        break;
+    }
+}
