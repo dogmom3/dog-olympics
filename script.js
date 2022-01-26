@@ -69,29 +69,119 @@ var jump = function (opponentName) {
         }
     }
 };
+//function to start a new game
+var startGame = function () {
+    //reset player stats
+    playerBones = 100;
+    playerJump = 10;
+    playerMoney = 10;
 
-//for loop
-for (var i = 0; i < opponentNames.length; i++) {
-    //if player still has bones, keep jumping
-    if (playerBones > 0) {
-        //let player know what round the are in, arrays start at 0, so it needs to have a 1 added to it.
-        window.alert("Welcome to Dog Olympics! Round " + (i + 1));
-        
-        //pick new opponent to jump based on the index of the opponentNames array
-        var pickedOpponentName = opponentNames[i];
-        
-        //reset opponentBones before starting new jump
-        opponentBones = 50;
+    //for loop
+    for (var i = 0; i < opponentNames.length; i++) {
+        //if player still has bones, keep jumping
+        if (playerBones > 0) {
+            //let player know what round the are in, arrays start at 0, so it needs to have a 1 added to it.
+            window.alert("Welcome to Dog Olympics! Round " + (i + 1));
 
-        //use debugger to pause script from running and check whats going on at that moment in the code
-        //debugger;
-        
-        //pass the pickedOpponentName variable's value into the fight function, where it will assume the value of the opponentName parameter
+            //pick new opponent to jump based on the index of the opponentNames array
+            var pickedOpponentName = opponentNames[i];
+
+            //reset opponentBones before starting new jump
+            opponentBones = 50;
+
+            //use debugger to pause script from running and check whats going on at that moment in the code
+            //debugger;
+
+            //pass the pickedOpponentName variable's value into the fight function, where it will assume the value of the opponentName parameter
+            jump(pickedOpponentName);
+        }
         jump(pickedOpponentName);
+        //if player is still participating, and we're not at the last opponent in the array
+        if (playerBones > 0 && i < opponentNames.length - 1) {
+            //ask if player wants to use the store before next round
+            var storeConfirm = window.confirm("The game is over, visit the store before the next round?");
+            //if yes, take them to the store() function
+            if (storeConfirm) {
+                shop();
+            }
+        }
+        //if the player is out of bones, stop the game
+        else {
+            window.alert("You have been defeated! Game Over!");
+            break;
+        }
     }
-    //if the player is out of bones, stop the game
+    //after the loop ends, player is either out of bones or opponents to jump, so run the endGame function
+    endGame();
+};
+
+//function to end the entire game
+var endGame = function () {
+    //if player still has bones, player wins
+    if (playerBones > 0) {
+        window.alert("Great job, you've won the game! You now have a score of " + playerMoney + ".");
+    }
     else {
-        window.alert("You have been defeated! Game Over!");
-        break;
+        window.alert("You've lost the game. Jump higher next time!");
+    }
+    //ask player if they'd like to play again
+    var playAgainConfirm = window.confirm("Would you like to play again?");
+
+    if (playAgainConfirm) {
+        //restart the game
+        startGame();
+    }
+    else {
+        window.alert("Thank you for participating in Dog Olympics! Come back soon!");
     }
 }
+
+var shop = function () {
+    //ask player what they'd like to do
+    var shopOptionPrompt = window.prompt(
+        "Would you like to REFILL your bones, UPGRADE your jump, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
+    // use switch to carry out action
+    switch (shopOptionPrompt) {
+        case "REFILL": // new case
+        case "refill":
+            if (playerMoney >=7) {
+            window.alert("Refilling player's bones by 20 for 7 dollars.");
+
+            // increase health and decrease money
+            playerBones = playerBones + 20;
+            playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert("You don't have enough money!");
+            }
+
+            break;
+        case "UPGRADE":
+        case "upgrade":
+            if (playerMoney >=7){
+            window.alert("Upgrading player's jump by 6 for 7 dollars.");
+
+            // increase jump and decrease money
+            playerJump = playerJump + 6;
+            playerMoney = playerMoney - 7;
+        }
+        else {
+            window.alert("You don't have enough money!");
+        }
+            break;
+        case "LEAVE":
+        case "leave":
+            window.alert("Leaving the store.");
+
+            // do nothing, so function will end
+            break;
+        default:
+            window.alert("You did not pick a valid option. Try again.");
+
+            // call shop() again to force player to pick a valid option
+            shop();
+            break;
+    }
+};
+//start the game when the page loads
+startGame();
