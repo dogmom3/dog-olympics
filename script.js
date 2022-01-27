@@ -1,3 +1,6 @@
+//makes html load before js
+document.addEventListener("DOMContentLoaded", function(event) {
+
 var playerName = window.prompt("What is your dog's name?");
 var playerBones = 100;
 var playerJump = 10;
@@ -8,7 +11,7 @@ var opponentBones = 50;
 var opponentJump = 12;
 
 //alert players that they are starting the round
-window.alert("Welcome to Dog Olympics!");
+window.alert("ARF! ARF!");
 
 
 //jump function
@@ -28,14 +31,15 @@ var jump = function (opponentName) {
             if (confirmSkip) {
                 window.alert(playerName + " has decided to skip this round. Arf! Arf!");
                 //subtract money from playerMoney for skipping
-                playerMoney = playerMoney - 10;
+                playerMoney = Math.max(0, playerMoney - 10);
                 console.log("playerMoney", playerMoney);
                 break;
             }
         }
 
-        //remove opponents bones by subtracting the amount set in the playerJump variable
-        opponentBones = opponentBones - playerJump;
+        // generate random damage value based on player's jump power
+        var damage = randomNumber(playerJump - 3, playerJump);
+        opponentBones = Math.max(0, opponentBones - damage);
         console.log(
             playerName + " jumped higher than " + opponentName + ". " + opponentName + " now has " + opponentBones + " bones remaining."
         );
@@ -52,9 +56,9 @@ var jump = function (opponentName) {
         } else {
             window.alert(opponentName + " still has " + opponentBones + " bones left.");
         }
-
-        //remove players bones by subtracting the amount set in opponentJump variable
-        playerBones = playerBones - opponentJump;
+        // generate random damage value based on opponent's jump power
+        var damage = randomNumber(opponentJump - 3, opponentJump);
+        playerBones = Math.max(0, playerBones - damage);
         console.log(
             opponentName + " jumped " + playerName + ". " + playerName + " now has " + playerBones + " bones remaining."
         );
@@ -72,7 +76,7 @@ var jump = function (opponentName) {
 //function to start a new game
 var startGame = function () {
     //reset player stats
-    playerBones = 100;
+    playerBones = randomNumber(40, 60);
     playerJump = 10;
     playerMoney = 10;
 
@@ -144,12 +148,12 @@ var shop = function () {
     switch (shopOptionPrompt) {
         case "REFILL": // new case
         case "refill":
-            if (playerMoney >=7) {
-            window.alert("Refilling player's bones by 20 for 7 dollars.");
+            if (playerMoney >= 7) {
+                window.alert("Refilling player's bones by 20 for 7 dollars.");
 
-            // increase health and decrease money
-            playerBones = playerBones + 20;
-            playerMoney = playerMoney - 7;
+                // increase health and decrease money
+                playerBones = playerBones + 20;
+                playerMoney = playerMoney - 7;
             }
             else {
                 window.alert("You don't have enough money!");
@@ -158,16 +162,16 @@ var shop = function () {
             break;
         case "UPGRADE":
         case "upgrade":
-            if (playerMoney >=7){
-            window.alert("Upgrading player's jump by 6 for 7 dollars.");
+            if (playerMoney >= 7) {
+                window.alert("Upgrading player's jump by 6 for 7 dollars.");
 
-            // increase jump and decrease money
-            playerJump = playerJump + 6;
-            playerMoney = playerMoney - 7;
-        }
-        else {
-            window.alert("You don't have enough money!");
-        }
+                // increase jump and decrease money
+                playerJump = playerJump + 6;
+                playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert("You don't have enough money!");
+            }
             break;
         case "LEAVE":
         case "leave":
@@ -183,5 +187,15 @@ var shop = function () {
             break;
     }
 };
+
+// function to generate a random numeric value
+var randomNumber = function (min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+};
 //start the game when the page loads
 startGame();
+
+//end of code to make html load before js
+});
